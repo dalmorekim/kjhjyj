@@ -87,7 +87,7 @@ const images = [
     thumbnail: GalleryPhoto12,
   },
   {
-    original: GalleryPhot13,
+    original: GalleryPhoto13,
     thumbnail: GalleryPhoto13,
   },
   {
