@@ -1,7 +1,7 @@
-export const WEDDING_INVITATION_URL = "http://localhost:8000/";
+export const WEDDING_INVITATION_URL = "https://kjhjyjweddinginvitation.netlify.app";
 export const KAKAOTALK_API_TOKEN = "fab35880c5a5e1f6b78fc0cd1cdedf4c";
 export const KAKAOTALK_SHARE_IMAGE =
-  "https://cdn.pixabay.com/photo/2014/11/13/17/04/heart-529607_960_720.jpg";
+  "https://res.cloudinary.com/dgsnm2add/image/upload/v1747323333/KakaoTalk_Photo_2025-05-03-21-32-35_002_unyhpp.jpg";
 
 export const WEDDING_DATE = "2025년 11월 22일, 토요일 오전 11시 30분";
 export const WEDDING_LOCATION = "비렌티웨딩홀, 4층 매그넘홀";
