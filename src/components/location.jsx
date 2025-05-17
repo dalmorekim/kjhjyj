@@ -57,7 +57,7 @@ const Location = () => {
     };
 
     document.body.appendChild(script);
-  }, []); // ✅ 여기 괄호까지 반드시 있어야 함
+  }, []); 
 
   return (
     <Wrapper>
@@ -75,6 +75,8 @@ const Location = () => {
     </Wrapper>
   );
 };
+
+export default Location;
 
   useEffect(() => {
     InstallScript();
