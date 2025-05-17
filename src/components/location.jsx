@@ -54,7 +54,6 @@ const Location = () => {
             key: "2ozce",
             mapWidth: "100%",
             mapHeight: "360",
-            container: "daumRoughmapContainer1747489654180"
           }).render();
         }
       };
