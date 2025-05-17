@@ -42,21 +42,24 @@ const Map = styled.div`
 
 const Location = () => {
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js";
-    script.async = true;
-
-    script.onload = () => {
-      new window.daum.roughmap.Lander({
-        timestamp: "747136922478",
-        key: "2ozce",
-        mapWidth: "100%",
-        mapHeight: "360",
-      }).render();
-    };
-
-    document.body.appendChild(script);
+    if (typeof window !== "undefined") {
+      const script = document.createElement("script");
+      script.src = "https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js";
+      script.async = true;
+  
+      script.onload = () => {
+        if (window.daum && window.daum.roughmap) {
+          new window.daum.roughmap.Lander({
+            timestamp: "747136922478",
+            key: "2ozce",
+            mapWidth: "100%",
+            mapHeight: "360",
+          }).render();
+        }
+      };
+  
+      document.body.appendChild(script);
+    }
   }, []);
 
   return (
