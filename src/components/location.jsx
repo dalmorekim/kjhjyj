@@ -41,52 +41,46 @@ const Map = styled.div`
 `;
 
 const Location = () => {
-  // 카카오 맵 불러오기
+  useEffect(() => {
+    const mapScript = document.createElement("script");
+    mapScript.src =
+      "https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js";
+    mapScript.async = true;
 
-  // <!-- 3. 실행 스크립트 -->
-  const executeScript = () => {
-    const scriptTag = document.createElement("script");
-    const inlineScript = document.createTextNode(`new daum.roughmap.Lander({
-    "timestamp" : "747136922478",
-    "key" : "2ozce",
-    "mapWidth" : "640",
-    "mapHeight" : "360"
-  }).render();`);
-    scriptTag.appendChild(inlineScript);
-    document.body.appendChild(scriptTag);
-  };
+    mapScript.onload = () => {
+      new window.daum.roughmap.Lander({
+        timestamp: "747136922478",
+        key: "2ozce",
+        mapWidth: "100%",
+        mapHeight: "360",
+      }).render();
+    };
 
-  // <!-- 2. 설치 스크립트 * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다. -->
-  // document.write 문제가 발생해서 해당 파일을 직접 가져온다음 수정했음
-  const InstallScript = () => {
-    (function () {
-      let c = window.location.protocol === "https:" ? "https:" : "http:";
-      let a = "16137cec";
+    document.body.appendChild(mapScript);
+  }, []);
 
-      if (window.daum && window.daum.roughmap && window.daum.roughmap.cdn) {
-        return;
-      }
-      window.daum = window.daum || {};
-      window.daum.roughmap = {
-        cdn: a,
-        URL_KEY_DATA_LOAD_PRE: c + "//t1.daumcdn.net/roughmap/",
-        url_protocal: c,
-      };
-      let b =
-        c +
-        "//t1.daumcdn.net/kakaomapweb/place/jscss/roughmap/" +
-        a +
-        "/roughmapLander.js";
+  return (
+    <Wrapper>
+      <Title>오시는 길</Title>
+      <Image src={Flower} alt="flower icon" />
+      <Content>
+        아래 지도를 통해 결혼식 장소를 확인하실 수 있습니다.
+      </Content>
 
-      // document.write -> doumnet.body.append로 수정
-      const scriptTag = document.createElement("script");
-      scriptTag.src = b;
-      document.body.append(scriptTag);
-      scriptTag.onload = () => {
-        executeScript();
-      };
-    })();
-  };
+      {/* 이 div가 지도가 삽입될 위치입니다 */}
+      <Map>
+        <div
+          id="daumRoughmapContainer"
+          className="root_daum_roughmap root_daum_roughmap_landing"
+        ></div>
+      </Map>
+
+      <Divider />
+    </Wrapper>
+  );
+};
+
+export default Location;
 
   useEffect(() => {
     InstallScript();

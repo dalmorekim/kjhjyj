@@ -39,14 +39,14 @@ const Quote = () => {
     <Wrapper>
       <Image src={Flower} data-aos="fade-up" />
       <Content data-aos="fade-up">
-        전윤지 대장
+        뭐를 써야하나
         <br />
-        힘을 내요
+        하나도 모르겠네
         <br />
-        사랑해요
+        어렵다 어려워
         <br />
         <br />
-        - 김종훈, (쫄병가) -
+        - 홀리 몰리 과카몰리 -
         <br />
         <br />
       </Content>
