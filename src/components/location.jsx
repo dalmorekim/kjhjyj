@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Divider } from "antd";
 import styled from "styled-components";
+import { Divider } from "antd";
 import Flower from "../assets/flower2.png";
 
 const Wrapper = styled.div`
@@ -35,36 +35,31 @@ const Content = styled.p`
   margin: 0;
 `;
 
-const Map = styled.div`
+const MapContainer = styled.div`
   width: 100%;
-  padding: 0;
+  height: 360px;
 `;
 
 const Location = () => {
   useEffect(() => {
-    // 카카오맵 스크립트 동적 생성 및 삽입
-    const script = document.createElement("script");
-    script.charset = "UTF-8";
-    script.className = "daum_roughmap_loader_script";
-    script.src = "https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js";
-    script.async = true;
+    // Kakao 지도 API가 로드되었는지 확인
+    const initMap = () => {
+      if (!window.kakao || !window.kakao.maps) return;
 
-    document.head.appendChild(script);
-
-    script.onload = () => {
-      // 스크립트 로딩 후 지도 실행
-      new window.daum.roughmap.Lander({
-        timestamp: "1747501569953",
-        key: "2o3zw",
-        mapWidth: "640",
-        mapHeight: "360",
-      }).render();
+      window.kakao.maps.load(() => {
+        const container = document.getElementById("map");
+        const options = {
+          center: new window.kakao.maps.LatLng(36.815107, 127.113833), // 원하는 좌표
+          level: 3,
+        };
+        new window.kakao.maps.Map(container, options);
+      });
     };
 
-    // 클린업
-    return () => {
-      document.head.removeChild(script);
-    };
+    // 이미 스크립트가 있다면 바로 init
+    if (window.kakao && window.kakao.maps) {
+      initMap();
+    }
   }, []);
 
   return (
@@ -77,45 +72,26 @@ const Location = () => {
         충남 천안시 서북구 천안대로 1198-30(신당동) 
         <br />
         비렌티웨딩홀 비렌티빌 4층 매그넘홀
-        <br />
-        <br />
+        <br /><br />
         <Title>대중교통 이용시</Title>
-        <br />
-        <br />
-        천안아산역 도착시 
-        <br />
-        패션2광장 정류장에서 2000번 버스 탑승 
-        <br />
+        <br /><br />
+        천안아산역 도착시 <br />
+        패션2광장 정류장에서 2000번 버스 탑승 <br />
         공주대 공과대학 하차 후 도보 5분
-        <br />
-        <br />
-        천안버스터미널 도착시
-        <br />
-        맥도날드 앞 정류장에서 112번, 140번, 141번, 143번, 144번, 145번, 150번, 151번 탑승
-        <br />
-        주대 공과대학  하차 후 도보 5분
-        <br />
-        <br />
+        <br /><br />
+        천안버스터미널 도착시 <br />
+        맥도날드 앞 정류장에서 다양한 버스 탑승 <br />
+        주대 공과대학 하차 후 도보 5분
+        <br /><br />
         <Title>셔틀버스 이용시</Title>
-        <br />
-        <br />
-        천안종합터미널 - 신세계백화점(아라리오광장) - 올리브영&스타벅스 횡단보도
-        <br />
-        두정역 1번출구에서 나와 오른쪽으로 50M 지점 파란색 셔틀버스 승강장(U1대학교)
-        <br />
-        <br />
+        <br /><br />
+        천안종합터미널 → 신세계백화점 → 두정역 등 셔틀 경로
+        <br /><br />
         <Title>광주에서 셔틀버스 이용시</Title>
-        <br />
-        <br />
-        수정예정
+        <br /><br />
+        수정 예정
       </Content>
-      <Map>
-        {/* 1. 지도 노드 */}
-        <div
-          id="daumRoughmapContainer1747501569953"
-          className="root_daum_roughmap root_daum_roughmap_landing"
-        ></div>
-      </Map>
+      <MapContainer id="map" />
     </Wrapper>
   );
 };
