@@ -41,26 +41,31 @@ const Map = styled.div`
 `;
 
 const Location = () => {
-  <!-- * 카카오맵 - 지도퍼가기 -->
-  <!-- 1. 지도 노드 -->
-  <div id="daumRoughmapContainer1747501569953" class="root_daum_roughmap root_daum_roughmap_landing"></div>
-  
-  <!--
-    2. 설치 스크립트
-    * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
-  -->
-  <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-  
-  <!-- 3. 실행 스크립트 -->
-  <script charset="UTF-8">
-    new daum.roughmap.Lander({
-      "timestamp" : "1747501569953",
-      "key" : "2o3zw",
-      "mapWidth" : "640",
-      "mapHeight" : "360"
-    }).render();
-  </script>
+  useEffect(() => {
+    // 카카오맵 스크립트 동적 생성 및 삽입
+    const script = document.createElement("script");
+    script.charset = "UTF-8";
+    script.className = "daum_roughmap_loader_script";
+    script.src = "https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js";
+    script.async = true;
 
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      // 스크립트 로딩 후 지도 실행
+      new window.daum.roughmap.Lander({
+        timestamp: "1747501569953",
+        key: "2o3zw",
+        mapWidth: "640",
+        mapHeight: "360",
+      }).render();
+    };
+
+    // 클린업
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   return (
     <Wrapper>
@@ -105,6 +110,7 @@ const Location = () => {
         수정예정
       </Content>
       <Map>
+        {/* 1. 지도 노드 */}
         <div
           id="daumRoughmapContainer1747501569953"
           className="root_daum_roughmap root_daum_roughmap_landing"
