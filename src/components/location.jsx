@@ -57,7 +57,7 @@ const Location = () => {
     };
 
     document.body.appendChild(script);
-  }, []); 
+  }, []);
 
   return (
     <Wrapper>
@@ -65,35 +65,8 @@ const Location = () => {
         <Title>오시는 길</Title>
       </Divider>
       <Image src={Flower} alt="꽃 아이콘" />
-      <Content>아래 지도를 통해 결혼식 장소를 확인하실 수 있습니다.</Content>
-      <Map>
-        <div
-          id="daumRoughmapContainer"
-          className="root_daum_roughmap root_daum_roughmap_landing"
-        ></div>
-      </Map>
-    </Wrapper>
-  );
-};
-
-export default Location;
-
-  useEffect(() => {
-    InstallScript();
-  }, [InstallScript]);
-
-  return (
-    <Wrapper>
-      <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-        <Title>오시는 길</Title>
-      </Divider>
-      <Image src={Flower} />
-      <Map
-        id="daumRoughmapContainer1652464367301"
-        className="root_daum_roughmap root_daum_roughmap_landing"
-      ></Map>
       <Content>
-      충남 천안시 서북구 천안대로 1198-30(신당동) 
+        충남 천안시 서북구 천안대로 1198-30(신당동) 
         <br />
         비렌티웨딩홀 비렌티빌 4층 매그넘홀
         <br />
@@ -128,6 +101,12 @@ export default Location;
         <br />
         수정예정
       </Content>
+      <Map>
+        <div
+          id="daumRoughmapContainer"
+          className="root_daum_roughmap root_daum_roughmap_landing"
+        ></div>
+      </Map>
     </Wrapper>
   );
 };
