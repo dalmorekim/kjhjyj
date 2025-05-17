@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Divider } from "antd";
 import styled from "styled-components";
+import { Divider } from "antd";
 import Flower from "../assets/flower2.png";
 
 const Wrapper = styled.div`
@@ -42,12 +42,12 @@ const Map = styled.div`
 
 const Location = () => {
   useEffect(() => {
-    const mapScript = document.createElement("script");
-    mapScript.src =
+    const script = document.createElement("script");
+    script.src =
       "https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js";
-    mapScript.async = true;
+    script.async = true;
 
-    mapScript.onload = () => {
+    script.onload = () => {
       new window.daum.roughmap.Lander({
         timestamp: "747136922478",
         key: "2ozce",
@@ -56,25 +56,20 @@ const Location = () => {
       }).render();
     };
 
-    document.body.appendChild(mapScript);
+    document.body.appendChild(script);
   }, []);
 
   return (
     <Wrapper>
       <Title>오시는 길</Title>
-      <Image src={Flower} alt="flower icon" />
-      <Content>
-        아래 지도를 통해 결혼식 장소를 확인하실 수 있습니다.
-      </Content>
-
-      {/* 이 div가 지도가 삽입될 위치입니다 */}
+      <Image src={Flower} alt="꽃 아이콘" />
+      <Content>아래 지도를 통해 결혼식 장소를 확인하실 수 있습니다.</Content>
       <Map>
         <div
           id="daumRoughmapContainer"
           className="root_daum_roughmap root_daum_roughmap_landing"
         ></div>
       </Map>
-
       <Divider />
     </Wrapper>
   );
