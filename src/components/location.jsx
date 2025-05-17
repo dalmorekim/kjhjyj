@@ -50,7 +50,7 @@ const Location = () => {
       script.onload = () => {
         if (window.daum && window.daum.roughmap) {
           new window.daum.roughmap.Lander({
-            timestamp: "747136922478",
+            timestamp: "7471369224780",
             key: "2ozce",
             mapWidth: "100%",
             mapHeight: "360",
