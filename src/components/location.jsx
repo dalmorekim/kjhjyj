@@ -54,6 +54,7 @@ const Location = () => {
             key: "2ozce",
             mapWidth: "100%",
             mapHeight: "360",
+            container: "daumRoughmapContainer1747489654180"
           }).render();
         }
       };
@@ -106,7 +107,7 @@ const Location = () => {
       </Content>
       <Map>
         <div
-          id="ddaumRoughmapContainer1747489654180"
+          id="daumRoughmapContainer1747489654180"
           className="root_daum_roughmap root_daum_roughmap_landing"
         ></div>
       </Map>
