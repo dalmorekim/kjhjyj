@@ -37,14 +37,17 @@ const Content = styled.p`
 
 const Map = styled.div`
   width: 100%;
+  height: 360px;
   padding: 0;
 `;
 
 const Location = () => {
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (!document.getElementById("daum-roughmap-script")) {
       const script = document.createElement("script");
-      script.src = "https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js";
+      script.id = "daum-roughmap-script";
+      script.src =
+        "https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js";
       script.async = true;
   
       script.onload = () => {
@@ -53,7 +56,7 @@ const Location = () => {
             timestamp: "1747489654180",
             key: "2ozce",
             mapWidth: "100%",
-            mapHeight: "360",
+            mapHeight: 360,
           }).render();
         }
       };
