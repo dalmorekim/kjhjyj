@@ -38,27 +38,33 @@ const Content = styled.p`
 const MapContainer = styled.div`
   width: 100%;
   height: 360px;
+  min-height: 360px;
 `;
 
 const Location = () => {
   useEffect(() => {
-    // Kakao 지도 API가 로드되었는지 확인
     const initMap = () => {
-      if (!window.kakao || !window.kakao.maps) return;
-
       window.kakao.maps.load(() => {
         const container = document.getElementById("map");
         const options = {
-          center: new window.kakao.maps.LatLng(36.815107, 127.113833), // 원하는 좌표
+          center: new window.kakao.maps.LatLng(36.815107, 127.113833),
           level: 3,
         };
         new window.kakao.maps.Map(container, options);
       });
     };
 
-    // 이미 스크립트가 있다면 바로 init
-    if (window.kakao && window.kakao.maps) {
+    if (window.kakao && window.kakao.maps && window.kakao.maps.load) {
       initMap();
+    } else {
+      const script = document.createElement("script");
+      script.src =
+        "//dapi.kakao.com/v2/maps/sdk.js?appkey=fab35880c5a5e1f6b78fc0cd1cdedf4c&autoload=false";
+      script.async = true;
+      script.onload = () => {
+        initMap();
+      };
+      document.head.appendChild(script);
     }
   }, []);
 
@@ -69,26 +75,37 @@ const Location = () => {
       </Divider>
       <Image src={Flower} alt="꽃 아이콘" />
       <Content>
-        충남 천안시 서북구 천안대로 1198-30(신당동) 
+        충남 천안시 서북구 천안대로 1198-30(신당동)
         <br />
         비렌티웨딩홀 비렌티빌 4층 매그넘홀
-        <br /><br />
+        <br />
+        <br />
         <Title>대중교통 이용시</Title>
-        <br /><br />
-        천안아산역 도착시 <br />
-        패션2광장 정류장에서 2000번 버스 탑승 <br />
+        <br />
+        <br />
+        천안아산역 도착시
+        <br />
+        패션2광장 정류장에서 2000번 버스 탑승
+        <br />
         공주대 공과대학 하차 후 도보 5분
-        <br /><br />
-        천안버스터미널 도착시 <br />
-        맥도날드 앞 정류장에서 다양한 버스 탑승 <br />
+        <br />
+        <br />
+        천안버스터미널 도착시
+        <br />
+        맥도날드 앞 정류장에서 다양한 버스 탑승
+        <br />
         주대 공과대학 하차 후 도보 5분
-        <br /><br />
+        <br />
+        <br />
         <Title>셔틀버스 이용시</Title>
-        <br /><br />
+        <br />
+        <br />
         천안종합터미널 → 신세계백화점 → 두정역 등 셔틀 경로
-        <br /><br />
+        <br />
+        <br />
         <Title>광주에서 셔틀버스 이용시</Title>
-        <br /><br />
+        <br />
+        <br />
         수정 예정
       </Content>
       <MapContainer id="map" />
