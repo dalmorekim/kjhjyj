@@ -61,7 +61,9 @@ const Location = () => {
 
   return (
     <Wrapper>
-      <Title>오시는 길</Title>
+      <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
+        <Title>오시는 길</Title>
+      </Divider>
       <Image src={Flower} alt="꽃 아이콘" />
       <Content>아래 지도를 통해 결혼식 장소를 확인하실 수 있습니다.</Content>
       <Map>
@@ -70,12 +72,9 @@ const Location = () => {
           className="root_daum_roughmap root_daum_roughmap_landing"
         ></div>
       </Map>
-      <Divider />
     </Wrapper>
   );
 };
-
-export default Location;
 
   useEffect(() => {
     InstallScript();
