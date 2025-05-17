@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
 import { Divider } from "antd";
+import styled from "styled-components";
 import Flower from "../assets/flower2.png";
 
 const Wrapper = styled.div`
@@ -37,21 +37,30 @@ const Content = styled.p`
 
 const Map = styled.div`
   width: 100%;
-  height: 360px;
   padding: 0;
 `;
 
 const Location = () => {
-  useEffect(() => {
-    if (window.daum && window.daum.roughmap) {
-      new window.daum.roughmap.Lander({
-        timestamp: "1747501569953",
-        key: "2o3zw",
-        mapWidth: "100%",
-        mapHeight: "360",
-      }).render();
-    }
-  }, []);
+  <!-- * 카카오맵 - 지도퍼가기 -->
+  <!-- 1. 지도 노드 -->
+  <div id="daumRoughmapContainer1747501569953" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+  
+  <!--
+    2. 설치 스크립트
+    * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+  -->
+  <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+  
+  <!-- 3. 실행 스크립트 -->
+  <script charset="UTF-8">
+    new daum.roughmap.Lander({
+      "timestamp" : "1747501569953",
+      "key" : "2o3zw",
+      "mapWidth" : "640",
+      "mapHeight" : "360"
+    }).render();
+  </script>
+
 
   return (
     <Wrapper>
