@@ -31,7 +31,8 @@ const VideoBackground = styled.video`
 `;
 
 const WeddingInvitation = styled.p`
-  font-size: 0.825rem;
+  font-size: 2rem;
+  font-weight: bold;
   opacity: 0.45;
   margin-bottom: 16px;
 `;
