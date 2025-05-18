@@ -51,22 +51,43 @@ const Location = () => {
           level: 3,
         };
         const map = new window.kakao.maps.Map(container, options);
-    
+
         const marker = new window.kakao.maps.Marker({
           position: new window.kakao.maps.LatLng(36.847932, 127.159187),
         });
         marker.setMap(map);
-    
+
         const infowindow = new window.kakao.maps.InfoWindow({
           content: `<div style="padding:5px;font-size:12px;">비렌티웨딩홀</div>`,
         });
         infowindow.open(map, marker);
-    
+
         window.kakao.maps.event.addListener(map, "click", () => {
-          window.open(
-            "https://map.kakao.com/link/to/비렌티웨딩홀,36.847932,127.159187",
-            "_blank"
-          );
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              (position) => {
+                const startLat = position.coords.latitude;
+                const startLng = position.coords.longitude;
+                const destName = "비렌티웨딩홀";
+                const destLat = 36.847932;
+                const destLng = 127.159187;
+
+                // 출발지 좌표(fromCoord) 포함해 카카오맵 길찾기 링크 생성
+                const url = `https://map.kakao.com/link/to/${encodeURIComponent(
+                  destName
+                )},${destLat},${destLng}?fromCoord=${startLat},${startLng}`;
+
+                window.open(url, "_blank");
+              },
+              (error) => {
+                alert(
+                  "현재 위치 정보를 불러올 수 없습니다. 위치 접근 권한을 확인해 주세요."
+                );
+              }
+            );
+          } else {
+            alert("이 브라우저에서는 위치 정보를 지원하지 않습니다.");
+          }
         });
       });
     };
