@@ -60,6 +60,8 @@ const Title = () => {
         <Schedule>
           {WEDDING_DATE}
           <br />
+          {WEDDING_DATE2}
+          <br />
           {WEDDING_LOCATION}
         </Schedule>
       </TitleWrapper>
