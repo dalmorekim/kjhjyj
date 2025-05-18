@@ -4,7 +4,9 @@ export const KAKAOTALK_SHARE_IMAGE =
   "https://res.cloudinary.com/dgsnm2add/image/upload/v1747479411/KakaoTalk_Photo_2025-05-03-21-32-35_001_kd3ewc.jpg";
 
 export const WEDDING_DATE = "2025년 11월 22일, 토요일 오전 11시 30분";
-export const WEDDING_LOCATION = "비렌티웨딩홀, 4층 매그넘홀";
+export const WEDDING_LOCATION = "비렌티웨딩홀";
+export const WEDDING_LOCATION2 = "4층 매그넘홀";
+
 
 export const GROOM_NAME = "김종훈";
 export const GROOM_ACCOUNT_NUMBER = "농협은행 352-0347-1200-53";
