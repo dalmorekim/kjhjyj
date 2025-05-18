@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Divider } from "antd";
 import styled from "styled-components";
+import { Divider } from "antd";
 import Flower from "../assets/flower2.png";
 
 const Wrapper = styled.div`
@@ -35,63 +35,38 @@ const Content = styled.p`
   margin: 0;
 `;
 
-const Map = styled.div`
+const MapContainer = styled.div`
   width: 100%;
-  padding: 0;
+  height: 360px;
+  min-height: 360px;
 `;
 
 const Location = () => {
-  // 카카오 맵 불러오기
-
-  // <!-- 3. 실행 스크립트 -->
-  const executeScript = () => {
-    const scriptTag = document.createElement("script");
-    const inlineScript = document.createTextNode(`new daum.roughmap.Lander({
-    "timestamp" : "1747551838882",
-    "key" : "2o32y",
-    "mapWidth" : "640",
-    "mapHeight" : "360"
-  }).render();`);
-    scriptTag.appendChild(inlineScript);
-    document.body.appendChild(scriptTag);
-  };
-
-  // <!-- 2. 설치 스크립트 * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다. -->
-  // document.write 문제가 발생해서 해당 파일을 직접 가져온다음 수정했음
-  const InstallScript = () => {
-    (function () {
-      let c = window.location.protocol === "https:" ? "https:" : "http:";
-      let a = "16137cec";
-
-      if (window.daum && window.daum.roughmap && window.daum.roughmap.cdn) {
-        return;
-      }
-      window.daum = window.daum || {};
-      window.daum.roughmap = {
-        cdn: a,
-        URL_KEY_DATA_LOAD_PRE: c + "//t1.daumcdn.net/roughmap/",
-        url_protocal: c,
-      };
-      let b =
-        c +
-        "//t1.daumcdn.net/kakaomapweb/place/jscss/roughmap/" +
-        a +
-        "/roughmapLander.js";
-
-      // document.write -> doumnet.body.append로 수정
-      const scriptTag = document.createElement("script");
-      scriptTag.src = b;
-      document.body.append(scriptTag);
-      scriptTag.onload = () => {
-        executeScript();
-      };
-    })();
-  };
-
   useEffect(() => {
-    InstallScript();
-  }, [InstallScript]);
+    const initMap = () => {
+      window.kakao.maps.load(() => {
+        const container = document.getElementById("map");
+        const options = {
+          center: new window.kakao.maps.LatLng(36.8151225, 127.1138637), // ✅ 비렌티웨딩홀 좌표
+          level: 3,
+        };
+        new window.kakao.maps.Map(container, options);
+      });
+    };
 
+    if (window.kakao && window.kakao.maps && window.kakao.maps.load) {
+      initMap();
+    } else {
+      const script = document.createElement("script");
+      script.src =
+        "//dapi.kakao.com/v2/maps/sdk.js?appkey=fab35880c5a5e1f6b78fc0cd1cdedf4c&autoload=false";
+      script.async = true;
+      script.onload = () => {
+        initMap();
+      };
+      document.head.appendChild(script);
+    }
+  }, []);
 
   return (
     <Wrapper>
