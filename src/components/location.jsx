@@ -47,13 +47,13 @@ const Location = () => {
       window.kakao.maps.load(() => {
         const container = document.getElementById("map");
         const options = {
-          center: new window.kakao.maps.LatLng(36.8150796, 127.113937),
+          center: new window.kakao.maps.LatLng(36.847932, 127.159187),
           level: 3,
         };
         const map = new window.kakao.maps.Map(container, options);
 
 const marker = new window.kakao.maps.Marker({
-  position: new window.kakao.maps.LatLng(36.8150796, 127.113937),
+  position: new window.kakao.maps.LatLng(36.847932, 127.159187),
 });
 marker.setMap(map);
 const infowindow = new window.kakao.maps.InfoWindow({
