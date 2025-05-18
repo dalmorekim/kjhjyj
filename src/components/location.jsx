@@ -47,10 +47,19 @@ const Location = () => {
       window.kakao.maps.load(() => {
         const container = document.getElementById("map");
         const options = {
-          center: new window.kakao.maps.LatLng(36.8151225, 127.1138637), // ✅ 비렌티웨딩홀 좌표
+          center: new window.kakao.maps.LatLng(36.8150796, 127.113937),
           level: 3,
         };
-        new window.kakao.maps.Map(container, options);
+        const map = new window.kakao.maps.Map(container, options);
+
+const marker = new window.kakao.maps.Marker({
+  position: new window.kakao.maps.LatLng(36.8150796, 127.113937),
+});
+marker.setMap(map);
+const infowindow = new window.kakao.maps.InfoWindow({
+  content: `<div style="padding:5px;font-size:12px;">비렌티웨딩홀</div>`,
+});
+infowindow.open(map, marker);
       });
     };
 
@@ -59,7 +68,7 @@ const Location = () => {
     } else {
       const script = document.createElement("script");
       script.src =
-        "//dapi.kakao.com/v2/maps/sdk.js?appkey=fab35880c5a5e1f6b78fc0cd1cdedf4c&autoload=false";
+        "https://dapi.kakao.com/v2/maps/sdk.js?appkey=fab35880c5a5e1f6b78fc0cd1cdedf4c&autoload=false";
       script.async = true;
       script.onload = () => {
         initMap();
