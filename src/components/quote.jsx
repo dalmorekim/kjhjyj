@@ -39,14 +39,15 @@ const Quote = () => {
     <Wrapper>
       <Image src={Flower} data-aos="fade-up" />
       <Content data-aos="fade-up">
-        뭐를 써야하나
+      When I look at you,
         <br />
-        하나도 모르겠네
+        I can feel it.
         <br />
-        어렵다 어려워
+        I look at you,
         <br />
+        and I'm home.
         <br />
-        - 홀리 몰리 과카몰리 -
+        « Finding Nemo »
         <br />
         <br />
       </Content>
