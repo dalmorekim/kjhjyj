@@ -43,12 +43,14 @@ const GroomBride = styled.p`
   font-weight: bold;
   opacity: 0.9;
   margin-bottom: 16px;
+  color: var(--title-color);
 `;
 
 const Schedule = styled.p`
   font-size: 1.06rem;
   opacity: 0.65;
   margin-bottom: 24px;
+  color: var(--title-color);
 `;
 
 const Title = () => {

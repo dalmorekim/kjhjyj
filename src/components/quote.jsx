@@ -47,8 +47,8 @@ const Quote = () => {
         <br />
         and I'm home.
         <br />
-        « Finding Nemo »
         <br />
+        « Finding Nemo »
         <br />
       </Content>
     </Wrapper>
