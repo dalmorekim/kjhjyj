@@ -15,7 +15,7 @@
 
 /* 배경은 body에만 */
 body {
-  background-color: var(--background-color);
+  background-color: var(--background-color) !important;
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -24,6 +24,11 @@ body {
 /* 텍스트 기본 색상 */
 p, span, div, h1, h2, h3, h4, h5, h6 {
   color: var(--text-color);
+}
+
+/* 배경이 덮이지 않도록 추가 wrapper 클래스에 배경 제거 */
+.wrapper, .container, #app {
+  background-color: transparent !important;
 }
 
 /* 카카오맵 버튼 숨기기 */
