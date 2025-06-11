@@ -70,7 +70,7 @@ const Title = () => {
         </Schedule>
       </TitleWrapper>
       <VideoBackground autoPlay loop muted playsInline>
-        <source src="/videos/wedding1122.mp4" type="video/mp4" />
+        <source src="/videos/1122wd.mp4" type="video/mp4" />
       </VideoBackground>
     </Layout>
   );
