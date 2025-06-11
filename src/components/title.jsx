@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import {
   WEDDING_DATE,
   WEDDING_DATE2,
@@ -8,10 +8,27 @@ import {
   BRIDE_NAME,
 } from "../../config.js";
 
+const GlobalStyle = createGlobalStyle`
+  @keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+`;
+
 const Layout = styled.div`
   width: 70%;
-  overflow: hidden;
+  max-width: 900px;
   margin: 0 auto;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 0 10px;
+  }
 `;
 
 const TitleWrapper = styled.div`
@@ -55,24 +72,35 @@ const Schedule = styled.p`
 
 const Title = () => {
   return (
-    <Layout>
-      <TitleWrapper>
-        <WeddingInvitation>WEDDING INVITATION</WeddingInvitation>
-        <GroomBride>
-          {GROOM_NAME} &#38; {BRIDE_NAME}
-        </GroomBride>
-        <Schedule>
-          {WEDDING_DATE}
-          <br />
-          {WEDDING_DATE2}
-          <br />
-          {WEDDING_LOCATION}
-        </Schedule>
-      </TitleWrapper>
-      <VideoBackground autoPlay loop muted playsInline>
-        <source src="/videos/1122wd.mp4" type="video/mp4" />
-      </VideoBackground>
-    </Layout>
+    <>
+      <GlobalStyle />
+      <Layout>
+        <TitleWrapper>
+          <WeddingInvitation>WEDDING INVITATION</WeddingInvitation>
+          <GroomBride>
+            {GROOM_NAME} &#38; {BRIDE_NAME}
+          </GroomBride>
+          <Schedule>
+            {WEDDING_DATE}
+            <br />
+            {WEDDING_DATE2}
+            <br />
+            {WEDDING_LOCATION}
+          </Schedule>
+        </TitleWrapper>
+        <VideoBackground
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+          role="presentation"
+        >
+          <source src="/videos/1122wd.mp4" type="video/mp4" />
+          비디오를 지원하지 않는 브라우저입니다.
+        </VideoBackground>
+      </Layout>
+    </>
   );
 };
 
