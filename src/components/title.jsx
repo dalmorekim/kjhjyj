@@ -96,7 +96,7 @@ const Title = () => {
           aria-hidden="true"
           role="presentation"
         >
-          <source src="/videos/1122wd.mp4" type="video/mp4" />
+          <source src="/videos/11222025wd.mp4" type="video/mp4" />
           비디오를 지원하지 않는 브라우저입니다.
         </VideoBackground>
       </Layout>
