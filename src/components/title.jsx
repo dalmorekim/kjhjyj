@@ -8,13 +8,13 @@ import {
   BRIDE_NAME,
 } from "../../config.js";
 
-const Layout = styled.div
+const Layout = styled.div`
   width: 70%;
   overflow: hidden;
   margin: 0 auto;
-;
+`;
 
-const TitleWrapper = styled.div
+const TitleWrapper = styled.div`
   width: 100%;
   text-align: center;
   padding-top: 42px;
@@ -24,34 +24,34 @@ const TitleWrapper = styled.div
   -moz-animation: fadein 3s;
   -webkit-animation: fadein 3s;
   -o-animation: fadein 3s;
-;
+`;
 
-const VideoBackground = styled.video
+const VideoBackground = styled.video`
   width: 100%;
-;
+`;
 
-const WeddingInvitation = styled.p
+const WeddingInvitation = styled.p`
   font-size: 2rem;
   font-weight: bold;
   opacity: 0.9;
   margin-bottom: 16px;
   color: var(--title-color);
-;
+`;
 
-const GroomBride = styled.p
+const GroomBride = styled.p`
   font-size: 1.5rem;
   font-weight: bold;
   opacity: 0.9;
   margin-bottom: 16px;
   color: var(--title-color);
-;
+`;
 
-const Schedule = styled.p
+const Schedule = styled.p`
   font-size: 1.06rem;
   opacity: 0.65;
   margin-bottom: 24px;
   color: var(--title-color);
-;
+`;
 
 const Title = () => {
   return (
